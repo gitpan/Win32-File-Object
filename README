@@ -4,14 +4,14 @@ NAME
 SYNOPSIS
       # Get a handle for the file.
       my $object = Win32::File::Object->new( $filename, $autowrite );
-  
-      # Read a property flag for the file.
+      
+  # Read a property flag for the file.
       my $readonly = $object->readonly;
-  
-      # Set a propertly flag for the file.
+      
+  # Set a propertly flag for the file.
       $object->readonly(1);
-
-      # If autowrite is false, write the changes to the file.
+      
+  # If autowrite is false, write the changes to the file.
       $object->write;
 
 DESCRIPTION
@@ -63,8 +63,8 @@ METHODS
   archive
       # Get the value
       my $archive = $file->archive;
-  
-      # Set the value
+      
+  # Set the value
       $file->archive(1);
 
     The "archive" accessor gets or set the Win32 "archive" status for the
@@ -73,8 +73,8 @@ METHODS
   compressed
       # Get the value
       my $compressed = $file->compressed;
-  
-      # Set the value
+      
+  # Set the value
       $file->compressed(1);
 
     The "compressed" accessor gets or set the Win32 "compressed" status for
@@ -83,8 +83,8 @@ METHODS
   directory
       # Get the value
       my $directory = $file->directory;
-  
-      # Set the value
+      
+  # Set the value
       $file->directory(1);
 
     The "directory" accessor gets or set the Win32 "directory" status for
@@ -93,8 +93,8 @@ METHODS
   hidden
       # Get the value
       my $hidden = $file->hidden;
-  
-      # Set the value
+      
+  # Set the value
       $file->hidden(1);
 
     The "hidden" accessor gets or set the Win32 "hidden" status for the
@@ -103,8 +103,8 @@ METHODS
   normal
       # Get the value
       my $normal = $file->normal;
-  
-      # Set the value
+      
+  # Set the value
       $file->normal(1);
 
     The "normal" accessor gets or set the Win32 "normal" status for the
@@ -113,8 +113,8 @@ METHODS
   offline
       # Get the value
       my $offline = $file->offline;
-  
-      # Set the value
+      
+  # Set the value
       $file->offline(1);
 
     The "offline" accessor gets or set the Win32 "offline" status for the
@@ -123,8 +123,8 @@ METHODS
   readonly
       # Get the value
       my $readonly = $file->readonly;
-  
-      # Set the value
+      
+  # Set the value
       $file->readonly(1);
 
     The "readonly" accessor gets or set the Win32 "readonly" status for the
@@ -133,8 +133,8 @@ METHODS
   system
       # Get the value
       my $system = $file->system;
-  
-      # Set the value
+      
+  # Set the value
       $file->system(1);
 
     The "system" accessor gets or set the Win32 "system" status for the
@@ -143,8 +143,8 @@ METHODS
   temporary
       # Get the value
       my $temporary = $file->temporary;
-  
-      # Set the value
+      
+  # Set the value
       $file->temporary(1);
 
     The "temporary" accessor gets or set the Win32 "temporary" status for
@@ -165,7 +165,7 @@ SEE ALSO
     Win32::File
 
 COPYRIGHT
-    Copyright 2008 Adam Kennedy.
+    Copyright 2008 - 2009 Adam Kennedy.
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.

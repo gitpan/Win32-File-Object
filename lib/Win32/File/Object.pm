@@ -16,7 +16,7 @@ Win32::File::Object - Simplified object abstraction over Win32::File
   
   # Set a propertly flag for the file.
   $object->readonly(1);
-
+  
   # If autowrite is false, write the changes to the file.
   $object->write;
 
@@ -43,7 +43,7 @@ use Win32::File ();
 
 use vars qw{$VERSION};
 BEGIN {
-	$VERSION = '0.01';
+	$VERSION = '0.02';
 }
 
 
@@ -90,6 +90,7 @@ sub new {
 	my $self = bless {
 		path      => $path,
 		autowrite => $autowrite,
+		rollback  => ! 1,
 	}, $class;
 
 	# Get the attributes
@@ -400,13 +401,19 @@ sub temporary {
 sub _attr {
 	my $self = shift;
 	my $name = shift;
-	if ( @_ ) {
-		my $new = $_[0] ? 1 : 0;
-		if ( $self->{$name} != $new ) {
-			$self->{$name} = $new;
-			$self->write if $self->autowrite;
-		}
+	my $new  = $_[0] ? 1 : 0;
+	return $self->{$name} unless @_;
+	return $self->{$name} if $new == $self->{$name};
+
+	# Set the rollback if needed
+	if ( $self->{rollback} and ! exists $self->{rollback}->{$name} ) {
+		$self->{rollback}->{$name} = $new;
 	}
+
+	# Set the new value
+	$self->{$name} = $new;
+	$self->write if $self->autowrite;
+
 	return $self->{$name};
 }
 
@@ -432,7 +439,7 @@ L<Win32::File>
 
 =head1 COPYRIGHT
 
-Copyright 2008 Adam Kennedy.
+Copyright 2008 - 2009 Adam Kennedy.
 
 This program is free software; you can redistribute
 it and/or modify it under the same terms as Perl itself.
